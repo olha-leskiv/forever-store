@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { backendUrl } from '../App'
+import { backendUrl, currency } from '../App'
 import { toast } from 'react-toastify'
+import { Product } from '../types/type'
 
 interface Props {
   token: string;
@@ -58,12 +59,12 @@ const List = ({token}: Props) => {
       <b className='text-center'>Action</b>
     </div>
 
-    {list && list.map((item, index) => {
+    {list && list.map((item: Product, index) => {
       return <div className='grid grid-cols-[1fr_3fr-1fr] md:grid-cols-[1fr_3fr_1fr_1fr_1fr] items-center py-1 px-2 border border-gray-200 text-small' key={index}>
         <img className="w-12" src={item.image[0]} alt="" />
         <p>{item.name}</p>
         <p>{item.category}</p>
-        <p>{item.currency}{item.price}</p>
+        <p>{currency}{item.price}</p>
         <p onClick={()=> removeProduct(item._id)} className='text-right cursor-pointer md:text-center'>X</p>
       </div>
       })
