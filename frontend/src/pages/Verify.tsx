@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { useSearchParams } from "react-router-dom"
   import { ShopContext } from '../context/ShopContext'
 import axios from 'axios'
 
 const Verify = () => {
-    const { navigate, token, setCartItems, backendUrl } = useContext(ShopContext)
+    const { navigate, token, setCartItems, backendUrl } = useContext(ShopContext)!
     const [ searchParams ] = useSearchParams()
 
     const success = searchParams.get('success')
